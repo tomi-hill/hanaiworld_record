@@ -191,6 +191,7 @@ section.block:nth-of-type(even){background:var(--cream-deep);}
 @media (max-width:700px){
   .chart-card .chart-wrap{height:340px;}
   .chart-card .chart-wrap.tall{height:420px;}
+  .chart-card .chart-wrap.short{height:360px;}
 }
 
 /* ---------- QUIZ STATS ---------- */
@@ -672,7 +673,7 @@ try{
       maintainAspectRatio:false,
       responsive:true,
       plugins:{legend:{display:false}},
-      scales:{y:{beginAtZero:true, ticks:{stepSize:1}, grid:{color:'rgba(74,46,35,0.08)'}}, x:{grid:{display:false}, ticks:{maxRotation:60, minRotation:0, autoSkip:false, font:{size:10}}}}
+      scales:{y:{beginAtZero:true, ticks:{stepSize:1}, grid:{color:'rgba(74,46,35,0.08)'}}, x:{grid:{display:false}, ticks:{maxRotation:90, minRotation:0, autoSkip:true, maxTicksLimit:9, font:{size:10}}}}
     }
   });
 }catch(e){console.error('section error:', e);}
