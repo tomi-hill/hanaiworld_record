@@ -70,14 +70,41 @@ git push -u origin main
 
 Cloudflareでドメインを管理していれば、Pagesプロジェクトの **Custom domains** タブから追加するだけで、DNS設定も自動で行われます。
 
+## OGP（Twitter/LINE/Discordなどでのリンクカード表示）
+
+`index.html` にOGP・Twitter Card用のメタタグを追加済みです。リンクを貼った際に `hanaiworld_database.jpg` の画像付きカードが表示されます。
+
+**デプロイ後、必ず以下の対応をしてください:**
+
+`index.html` 内の `https://REPLACE-WITH-YOUR-DOMAIN/` を、実際に公開されるURL（例: `https://your-project.pages.dev/`）に置き換えてください。対象は以下の4箇所です。
+
+```html
+<meta property="og:image" content="https://REPLACE-WITH-YOUR-DOMAIN/hanaiworld_database.jpg">
+<meta property="og:url" content="https://REPLACE-WITH-YOUR-DOMAIN/">
+...
+<meta name="twitter:image" content="https://REPLACE-WITH-YOUR-DOMAIN/hanaiworld_database.jpg">
+```
+
+OGP画像はURLが絶対パスでないと多くのSNSで正しく表示されないため、この置き換えは必須です。ドメインが決まったら教えていただければ、こちらで直したものをお渡しすることもできます。
+
+置き換えたら、[Twitter Card Validator](https://cards-dev.twitter.com/validator) や [Facebookシェアデバッガー](https://developers.facebook.com/tools/debug/) で表示確認ができます。
+
 ## ファイル構成
 
 ```
 .
-├── index.html          # ダッシュボード本体
-├── はないわーるど.xlsx  # データ本体（更新はこのファイルを編集するだけ）
-└── README.md           # このファイル
+├── index.html                 # HTML構造のみ
+├── style.css                  # 全スタイル
+├── app.js                     # データ・グラフ描画・検索などのロジック
+├── vendor/
+│   ├── chart.min.js           # グラフ描画ライブラリ（Chart.js）
+│   └── xlsx.min.js            # Excel読み込みライブラリ（SheetJS）
+├── はないわーるど.xlsx         # データ本体（更新はこのファイルを編集するだけ）
+├── hanaiworld_database.jpg    # OGP用のカード画像
+└── README.md                  # このファイル
 ```
+
+すべてのファイルを**同じ構成のまま**リポジトリに置いてください。`index.html`は`style.css`・`app.js`・`vendor/`内の2ファイルを相対パスで読み込んでいます。
 
 ## 構造的な変更をしたい場合
 
