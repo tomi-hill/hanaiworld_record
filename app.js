@@ -143,7 +143,7 @@ try{
     const hi = validSorted[n/2];
     medianCard = {
       cls:'med', kicker:'中央値 MEDIAN', val:fmtScore(s.median_val)+'点',
-      name: lo && hi ? `${lo.name.split('\n')[0]} <br> ${hi.name.split('\n')[0]}` : '',
+      name: lo && hi ? `${lo.name.split(/\r?\n/)[0].trim()} <br> ${hi.name.split(/\r?\n/)[0].trim()}` : '',
       desc: lo && hi ? `${lo.name.replace(/\n/g,' ')} <br> ${hi.name.replace(/\n/g,' ')}` : ''
     };
   }
