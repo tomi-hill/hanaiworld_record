@@ -144,7 +144,7 @@ try{
     medianCard = {
       cls:'med', kicker:'中央値 MEDIAN', val:fmtScore(s.median_val)+'点',
       name: lo && hi ? `${lo.name.replace(/\n/g,' ')}<br> ${hi.name.replace(/\n/g,' ')}` : '',
-      desc: lo && hi ? `${lo.score_text || ''}<br>${hi.score_text || ''}` : ''
+      desc: lo && hi ? `${lo.score_text || ''}<br>${hi.score_text || ''}<br>の平均` : ''
     };
   }
   const cards = [
